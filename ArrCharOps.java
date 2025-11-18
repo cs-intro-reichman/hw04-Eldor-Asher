@@ -188,47 +188,49 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-      
-    // A. טיפול באותיות קטנות (כדי לא להיות רגיש לאותיות)
-    str1 = str1.toLowerCase();
-    str2 = str2.toLowerCase();
-
-    // קביעת אורך הבדיקה: האורך של המחרוזת הקצרה יותר
-    int len1 = str1.length();
-    int len2 = str2.length();
-    int minLength = Math.min(len1, len2);
-
-    // B. בדיקת תווים אחד מול השני
-    for (int i = 0; i < minLength; i++) {
-        char char1 = str1.charAt(i);
-        char char2 = str2.charAt(i);
-
-        if (char1 < char2) {
-            // str1 קטן יותר
-            return -1;
-        } else if (char1 > char2) {
-            // str1 גדול יותר
-            return 1;
+        str1 = str1.toLowerCase();
+        str2 = str2.toLowerCase();
+        if (str1.equals(str2))
+        {
+            return 0;
         }
-        // אם התווים זהים, הלולאה ממשיכה לאיטרציה הבאה
+        if (str1.length() > str2.length())
+        {
+            for (int i=0; i<str2.length();i++)
+            {
+                if (str1.charAt(i) > str2.charAt(i))
+                {
+                    return 1;
+                }
+                else if (str1.charAt(i) < str2.charAt(i))
+                {
+                    return -1;
+                }
+                else if (i == (str2.length() -1)) 
+                {
+                    return 1;
+                }
+                
+            }
+        }
+        if (str1.length() < str2.length())
+        {
+            for (int i=0; i<str1.length();i++)
+            {
+                if (str1.charAt(i) > str2.charAt(i))
+                {
+                    return 1;
+                }
+                else if (str1.charAt(i) < str2.charAt(i))
+                {
+                    return -1;
+                }
+                else if (i == (str1.length() -1)) 
+                {
+                    return -1;
+                } 
+            }
+        }
+        return -2;
     }
-
-    // C. הטיפול באורך (לאחר שכל התווים המשותפים זהים)
-    // אם הגעת לכאן, כל התווים עד minLength זהים.
-    
-    if (len1 < len2) {
-        // str1 קטן יותר כי הוא קצר יותר וכל התווים תואמים
-        return -1; 
-    } else if (len1 > len2) {
-        // str1 גדול יותר כי הוא ארוך יותר וכל התווים תואמים
-        return 1;
-    } else if (len1 == len2)
-    {
-        return 0; 
-
-    }
-      return -2;
-        
-    
-}
 }
