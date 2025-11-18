@@ -190,7 +190,7 @@ public class ArrCharOps {
     public static int compareTo(String str1, String str2) {
         str1 = str1.toLowerCase();
         str2 = str2.toLowerCase();
-        if (str1 == str2)
+        if (str1.equals(str2))
         {
             return 0;
         }
