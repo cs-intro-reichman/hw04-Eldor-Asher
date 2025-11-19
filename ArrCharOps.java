@@ -212,7 +212,7 @@ public class ArrCharOps {
                 }
                 else if (i == (str2.length() -1)) 
                 {
-                    return 1;
+                    return -1;
                 }
                 
             }
@@ -232,7 +232,7 @@ public class ArrCharOps {
                 }
                 else if (i == (str1.length() -1)) 
                 {
-                    return -1;
+                    return 1;
                 }
             }
         }
