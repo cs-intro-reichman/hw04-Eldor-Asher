@@ -1,5 +1,3 @@
-import java.util.Locale;
-
 /** A library of operations on arrays of characters (char values).
  *  The library also features a string comparison method. */
 public class ArrCharOps {
@@ -190,29 +188,36 @@ public class ArrCharOps {
      *         return -2 if there is an error with the input.
      */
     public static int compareTo(String str1, String str2) {
-       
-    if (str1 == null || str2 == null) return -2;
-    if (str1.length() == 0 || str2.length() == 0) return -2;
-
-    // המרה לקטן (שימוש ב-ROOT למניעת התנהגויות לא צפויות לפי locale)
-    String s1 = str1.toLowerCase();
-    String s2 = str2.toLowerCase();
-
-    int minLength = Math.min(s1.length(), s2.length());
-
-    // השוואת תווים אחד-אחד
-    for (int i = 0; i < minLength; i++) {
-        char c1 = s1.charAt(i);
-        char c2 = s2.charAt(i);
-        if (c1 < c2) return -1;
-        if (c1 > c2) return 1;
+        if(str1.length() == 0 || str2.length() == 0)
+        {
+            return -2;
+        }
+        if (str1.length() < str2.length())
+        {
+            return -1;
+        }
+        if (str1.length() > str2.length())
+        {
+            return 1;
+        }
+        if (str1.length() == str2.length())
+        {
+            for (int i=0, j=0; i<str1.length(); i++, j++)
+            {
+                if (str1.charAt(i) != str2.charAt(j))
+                {
+                    if ((int) str1.charAt(i) < (int) str2.charAt(j))
+                    {
+                        return -1;
+                    }
+                    else
+                    {
+                        return 1;
+                    }
+                }
+            }
+        }
+        return 0;
     }
 
-    // אם כל התווים עד האורך הקצר זהים -> ההכרעה לפי אורך
-    if (s1.length() < s2.length()) return -1;
-    if (s1.length() > s2.length()) return 1;
-
-    // אם הגענו לפה - שתי המחרוזות שוות בדיוק
-    return 0;
-}
 }
