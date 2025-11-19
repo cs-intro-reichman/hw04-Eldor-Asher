@@ -5,7 +5,7 @@ public class Primes {
         boolean flag = true;
         int counter = 0;
         System.out.println("Prime numbers up to " +main_number+ ":");
-        while (flag);
+        while (flag)
         {
             if (main_number == index) 
             {
@@ -18,30 +18,27 @@ public class Primes {
             }
             index++;
         }
-        System.out.println("There are " +counter+ "primes between 2 and " +main_number);
+        int per = (int) (((double) counter / main_number) * 100);
+        System.out.println("There are " +counter+ " primes between 2 and " +main_number+ " (" + per+ "% are primes)");
     }
     public static boolean Is_Prime (int number_check)
     {
-        int index_check = 2;
-        boolean flag = true;
-        while (flag) 
-        {
-            if (number_check == 2)
+        if (number_check == 2)
             {
-                flag = false;
+                return true;
             }
-            
-            if (number_check % index_check == 0)
+        for (int i=2; i<= number_check; i++)
             {
-                flag = true;
+                if (i == number_check)
+                {
+                    return true;
+                }
+                if (number_check % i == 0)
+                {
+                    return false;
+                }
             }
-            index_check++;
-            if (number_check == index_check)
-            {
-                flag = false;
-            }
-        }
-        return flag;
+            return true;
     }
 
 }
