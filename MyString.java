@@ -26,8 +26,8 @@ public class MyString {
     public static boolean contains(String str1, String str2) {
         int len1 = str1.length();
         int len2 = str2.length();
-        char letter;
-        int index1;
+        str1 =lowerCase(str1);
+        str2 =lowerCase(str2);
         int counter =0;
         int j = 0;
         if(len1 == 0 || len2 == 0)
